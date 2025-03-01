@@ -48,6 +48,12 @@ export const RemoveMeetingParticipantValidation = z.object({
   deletedAt: z.date().optional(),
 });
 
-export type CreateMeetingParticipantDTO = z.infer<typeof CreateMeetingParticipantValidation>;
-export type PatchMeetingParticipantDTO = z.infer<typeof PatchMeetingParticipantValidation>;
-export type RemoveMeetingParticipantDTO = z.infer<typeof RemoveMeetingParticipantValidation>;
+export type CreateMeetingParticipantDTO = z.infer<
+  typeof CreateMeetingParticipantValidation
+>;
+export type PatchMeetingParticipantDTO = z.infer<
+  typeof PatchMeetingParticipantValidation
+>;
+export type RemoveMeetingParticipantDTO = z.infer<
+  typeof RemoveMeetingParticipantValidation
+>;

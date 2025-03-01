@@ -11,11 +11,14 @@ import {
 import { MeetingSpaceService } from './meetingSpace.service';
 import { User } from '@nest-extended/core/common/decorators/User.decorator';
 import { MeetingSpace } from 'src/schemas/meetingSpace.schema';
-import { ModifyBody, setCreatedBy } from '@nest-extended/core/common/decorators/ModifyBody.decorator';
+import {
+  ModifyBody,
+  setCreatedBy,
+} from '@nest-extended/core/common/decorators/ModifyBody.decorator';
 
 @Controller('meeting-space')
 export class MeetingSpaceController {
-  constructor(private readonly meetingSpaceService: MeetingSpaceService) { }
+  constructor(private readonly meetingSpaceService: MeetingSpaceService) {}
 
   @Get()
   async find(@Query() query: Record<string, any>) {
@@ -29,7 +32,7 @@ export class MeetingSpaceController {
 
   @Post()
   async create(
-    @ModifyBody(setCreatedBy()) createMeetingSpaceDto: MeetingSpace
+    @ModifyBody(setCreatedBy()) createMeetingSpaceDto: MeetingSpace,
   ) {
     return await this.meetingSpaceService._create(createMeetingSpaceDto);
   }
@@ -40,7 +43,11 @@ export class MeetingSpaceController {
     @Body() patchMeetingSpaceDto: Partial<MeetingSpace>,
     @Param('id') id,
   ) {
-    return await this.meetingSpaceService._patch(id, patchMeetingSpaceDto, query);
+    return await this.meetingSpaceService._patch(
+      id,
+      patchMeetingSpaceDto,
+      query,
+    );
   }
 
   @Delete('/:id?')

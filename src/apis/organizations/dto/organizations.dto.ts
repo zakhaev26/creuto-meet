@@ -48,6 +48,12 @@ export const RemoveOrganizationsValidation = z.object({
   deletedAt: z.date().optional(),
 });
 
-export type CreateOrganizationsDTO = z.infer<typeof CreateOrganizationsValidation>;
-export type PatchOrganizationsDTO = z.infer<typeof PatchOrganizationsValidation>;
-export type RemoveOrganizationsDTO = z.infer<typeof RemoveOrganizationsValidation>;
+export type CreateOrganizationsDTO = z.infer<
+  typeof CreateOrganizationsValidation
+>;
+export type PatchOrganizationsDTO = z.infer<
+  typeof PatchOrganizationsValidation
+>;
+export type RemoveOrganizationsDTO = z.infer<
+  typeof RemoveOrganizationsValidation
+>;

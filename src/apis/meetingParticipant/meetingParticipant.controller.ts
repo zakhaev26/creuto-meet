@@ -11,11 +11,16 @@ import {
 import { MeetingParticipantService } from './meetingParticipant.service';
 import { User } from '@nest-extended/core/common/decorators/User.decorator';
 import { MeetingParticipant } from 'src/schemas/meetingParticipant.schema';
-import { ModifyBody, setCreatedBy } from '@nest-extended/core/common/decorators/ModifyBody.decorator';
+import {
+  ModifyBody,
+  setCreatedBy,
+} from '@nest-extended/core/common/decorators/ModifyBody.decorator';
 
 @Controller('meeting-participant')
 export class MeetingParticipantController {
-  constructor(private readonly meetingParticipantService: MeetingParticipantService) { }
+  constructor(
+    private readonly meetingParticipantService: MeetingParticipantService,
+  ) {}
 
   @Get()
   async find(@Query() query: Record<string, any>) {
@@ -29,9 +34,11 @@ export class MeetingParticipantController {
 
   @Post()
   async create(
-    @ModifyBody(setCreatedBy()) createMeetingParticipantDto: MeetingParticipant
+    @ModifyBody(setCreatedBy()) createMeetingParticipantDto: MeetingParticipant,
   ) {
-    return await this.meetingParticipantService._create(createMeetingParticipantDto);
+    return await this.meetingParticipantService._create(
+      createMeetingParticipantDto,
+    );
   }
 
   @Patch('/:id?')
@@ -40,7 +47,11 @@ export class MeetingParticipantController {
     @Body() patchMeetingParticipantDto: Partial<MeetingParticipant>,
     @Param('id') id,
   ) {
-    return await this.meetingParticipantService._patch(id, patchMeetingParticipantDto, query);
+    return await this.meetingParticipantService._patch(
+      id,
+      patchMeetingParticipantDto,
+      query,
+    );
   }
 
   @Delete('/:id?')

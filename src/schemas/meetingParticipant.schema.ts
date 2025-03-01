@@ -50,4 +50,5 @@ export class MeetingParticipant {
   deletedAt?: Date;
 }
 
-export const MeetingParticipantSchema = SchemaFactory.createForClass(MeetingParticipant);
+export const MeetingParticipantSchema =
+  SchemaFactory.createForClass(MeetingParticipant);

@@ -48,6 +48,10 @@ export const RemoveMeetingSpaceValidation = z.object({
   deletedAt: z.date().optional(),
 });
 
-export type CreateMeetingSpaceDTO = z.infer<typeof CreateMeetingSpaceValidation>;
+export type CreateMeetingSpaceDTO = z.infer<
+  typeof CreateMeetingSpaceValidation
+>;
 export type PatchMeetingSpaceDTO = z.infer<typeof PatchMeetingSpaceValidation>;
-export type RemoveMeetingSpaceDTO = z.infer<typeof RemoveMeetingSpaceValidation>;
+export type RemoveMeetingSpaceDTO = z.infer<
+  typeof RemoveMeetingSpaceValidation
+>;

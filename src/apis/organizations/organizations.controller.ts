@@ -11,11 +11,14 @@ import {
 import { OrganizationsService } from './organizations.service';
 import { User } from '@nest-extended/core/common/decorators/User.decorator';
 import { Organizations } from 'src/schemas/organizations.schema';
-import { ModifyBody, setCreatedBy } from '@nest-extended/core/common/decorators/ModifyBody.decorator';
+import {
+  ModifyBody,
+  setCreatedBy,
+} from '@nest-extended/core/common/decorators/ModifyBody.decorator';
 
 @Controller('organizations')
 export class OrganizationsController {
-  constructor(private readonly organizationsService: OrganizationsService) { }
+  constructor(private readonly organizationsService: OrganizationsService) {}
 
   @Get()
   async find(@Query() query: Record<string, any>) {
@@ -29,7 +32,7 @@ export class OrganizationsController {
 
   @Post()
   async create(
-    @ModifyBody(setCreatedBy()) createOrganizationsDto: Organizations
+    @ModifyBody(setCreatedBy()) createOrganizationsDto: Organizations,
   ) {
     return await this.organizationsService._create(createOrganizationsDto);
   }
@@ -40,7 +43,11 @@ export class OrganizationsController {
     @Body() patchOrganizationsDto: Partial<Organizations>,
     @Param('id') id,
   ) {
-    return await this.organizationsService._patch(id, patchOrganizationsDto, query);
+    return await this.organizationsService._patch(
+      id,
+      patchOrganizationsDto,
+      query,
+    );
   }
 
   @Delete('/:id?')

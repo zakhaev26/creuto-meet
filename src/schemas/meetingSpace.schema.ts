@@ -30,7 +30,11 @@ export class MeetingSpace {
   @Prop({ type: Date, required: true })
   endTime: Date;
 
-  @Prop({ type: String, enum: ['scheduled', 'ongoing', 'completed', 'cancelled'], required: true })
+  @Prop({
+    type: String,
+    enum: ['scheduled', 'ongoing', 'completed', 'cancelled'],
+    required: true,
+  })
   status: string;
 
   @Prop({ type: Number, default: 12 })
